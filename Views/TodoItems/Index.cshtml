@@ -1,0 +1,28 @@
+@model List<Domaca_Zadaca_3.Core.Models.TodoItem>
+
+
+<h1 class="text-center">
+    @ViewData["Title"]
+</h1>
+
+<div class="text-center">
+    <h3>
+        <a asp-controller="Todo" asp-action="Add" style="padding-right: 2em"><strong>Add new todo </strong><span class="glyphicon glyphicon-plus-sign"></span></a>
+        <a asp-controller="Todo" asp-action="Completed"><strong>See completed todos </strong><span class="glyphicon glyphicon-blackboard"></span></a>
+    </h3>
+</div>
+
+<ul class="text-center list-group">
+    @foreach (var item in Model)
+    {
+        <li class="list-group-item">
+            <p class="list-group-item-heading">
+                <strong>@item.Text</strong>
+            </p>
+            <p class="list-group-item-info">
+                <a asp-controller="Todo" asp-action="MarkCompleted" asp-route-id="@item.Id"><strong>Mark as completed </strong><span class="glyphicon glyphicon-check"></span></a>
+                <em>Created: @item.DateCreated</em>
+            </p>
+        </li>
+    }
+</ul>
