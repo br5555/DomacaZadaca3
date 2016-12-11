@@ -26,7 +26,8 @@ namespace Domaca_Zadaca_3.Core.Interface
         /// <param name="userId">Id of the user that is trying to update the data
         /// </param>
         void Update(TodoItem todoItem, Guid userId);
-        
+
+        void Add(TodoItem todoItem);
 
         ///<summary>
         ///Tries to mark a TodoItem as completed in database. Throw TodoAccessDeniedException with appropriate message if user is not the owner of the Todo item

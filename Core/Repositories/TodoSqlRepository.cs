@@ -81,6 +81,16 @@ namespace Domaca_Zadaca_3.Core.Repositories
                 return db.TodoItems.Where(s => s.UserId == userId).Where(filterFunction).ToList();
             }
         }
+        public void Add(TodoItem todoItem)
+        {
+            using (var db = new TodoItemDbContext())
+            {
+
+                db.TodoItems.Add(todoItem);
+                db.SaveChanges();
+            }
+        }
+
         ///<summary>
         ///Tries to mark a TodoItem as completed in database. Throw TodoAccessDeniedException with appropriate message if user is not the owner of the Todo item
         ///
@@ -115,6 +125,8 @@ namespace Domaca_Zadaca_3.Core.Repositories
         /// <param name="todoItem">Todo item </param>
         /// <param name="userId">Id of the user that is trying to update the data
         /// </param>
+        /// 
+
         public void Update(TodoItem todoItem, Guid userId)
         {
             var privremeni = new TodoSqlRepository();
